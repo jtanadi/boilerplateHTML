@@ -20,7 +20,9 @@ const rl = readline.createInterface({
 /************************/
 /*       Prompts        */
 /************************/
-const prompts = ["Enter page title (press enter to skip):", "Enter path to CSS file (press enter to skip):", "Enter path to JS file (press enter to skip):"];
+const prompts = ["Enter page title (press enter to skip):",
+                 "Enter path to CSS file (press enter to skip):",
+                 "Enter path to JS file (press enter to skip):"];
 let pageTitle, cssFilePath, jsFilePath;
 promiseQuestion(prompts[0])
   .then(data => {
