@@ -22,14 +22,14 @@ const rl = readline.createInterface({
 /************************/
 const prompts = ["Enter page title (press enter to skip):", "Enter path to CSS file (press enter to skip):", "Enter path to JS file (press enter to skip):"];
 let pageTitle, cssFilePath, jsFilePath;
-askQuestion(prompts, 0)
+promiseQuestion(prompts[0])
   .then(data => {
     pageTitle = data;
-    return askQuestion(prompts, 1);
+    return promiseQuestion(prompts[1]);
   })
   .then(data => {
     cssFilePath = data;
-    return askQuestion(prompts, 2);
+    return promiseQuestion(prompts[2]);
   })
   .then(data => {
     jsFilePath = data;
@@ -41,9 +41,9 @@ askQuestion(prompts, 0)
 /************************/
 /* Function definitions */
 /************************/
-function askQuestion(questions, index) {
+function promiseQuestion(question) {
   return new Promise((resolve, reject) => {
-    rl.question(questions[index] + "\n", answer => {
+    rl.question(question + "\n", answer => {
       resolve(answer);
     })
   })
