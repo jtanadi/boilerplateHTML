@@ -20,6 +20,12 @@ const rl = readline.createInterface({
 /************************/
 /*       Prompts        */
 /************************/
+<<<<<<< HEAD
+=======
+const prompts = ["Enter page title (press enter to skip):",
+                 "Enter path to CSS file (press enter to skip):",
+                 "Enter path to JS file (press enter to skip):"];
+>>>>>>> ce18fddeb643c6eef360a55f0e281d4eb51a41ae
 let pageTitle, cssFilePath, jsFilePath;
 const prompts = [
   "Enter page title (press enter to skip):",
