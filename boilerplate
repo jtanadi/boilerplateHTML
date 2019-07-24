@@ -8,7 +8,7 @@ const readline = require("readline");
 const fs = require("fs");
 
 let htmlFileName = process.argv[2];
-if (htmlFileName.split(".").slice(-1) !== "html") {
+if (htmlFileName.slice(-5) !== ".html") {
   htmlFileName += ".html";
 }
 
@@ -51,7 +51,8 @@ function askQuestion(questions, index) {
 
 function createHTML(htmlFile, title, css, js) {
   const htmlString =
-`<html>
+`<!DOCTYPE html>
+<html>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
