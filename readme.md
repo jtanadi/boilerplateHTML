@@ -1,5 +1,5 @@
 # boilerplate (for HTML)
-Simple node script to start a basic html file.
+Simple node script to create a boilerplate html file.
 
 ### Installation
 Install in `~/bin` to use globally (create folder if it doesn't exist and add it to your `$PATH`).
