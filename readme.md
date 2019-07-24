@@ -10,8 +10,7 @@ To start a new `.html` file, type:
 $ boilerplate <htmlFileName>
 ```
 
-`boilerplate` only checks if the argument has an `.html` extension (if it doesn't it will be added).
-`boilerplate` doesn't check for anything else. If the file already exists, it will be overwritten.
+`boilerplate` only checks if the argument has an `.html` extension (if it doesn't it will be added). It doesn't check for anything else. If the file already exists, it will be overwritten.
 
 `boilerplate` will prompt for a page title, path to a `CSS` file, and a path to a `JS` file:
 ```
