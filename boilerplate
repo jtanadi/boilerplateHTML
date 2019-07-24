@@ -1,0 +1,72 @@
+#! /usr/bin/env node
+if (process.argv.length !== 3){
+  console.log("boilerplate takes in 1 argument (file name)");
+  return;
+}
+
+const readline = require("readline");
+const fs = require("fs");
+
+let htmlFileName = process.argv[2];
+if (htmlFileName.split(".").slice(-1) !== "html") {
+  htmlFileName += ".html";
+}
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+})
+
+/************************/
+/* Function definitions */
+/************************/
+function askQuestion(questions, index) {
+  return new Promise((resolve, reject) => {
+    rl.question(questions[index] + "\n", answer => {
+      resolve(answer);
+    })
+  })
+}
+
+function createHTML(htmlFile, title, css, js) {
+  const htmlString =
+`<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="${css}" />
+    <title>${title}</title>
+  </head>
+
+  <body>
+    <script type="application/javascript" src="${js}"></script>
+  </body>
+</html>
+`
+
+  fs.writeFile(htmlFile, htmlString, err => {
+    if (err) throw err;
+    console.log(`Boilerplate ${htmlFile} written.`);
+  })
+}
+
+/************************/
+/*     Do some work     */
+/************************/
+const prompts = ["Enter page title (press enter to skip):", "Enter path to CSS file (press enter to skip):", "Enter path to JS file (press enter to skip):"];
+let pageTitle, cssFilePath, jsFilePath;
+askQuestion(prompts, 0)
+  .then(data => {
+    pageTitle = data;
+    return askQuestion(prompts, 1);
+  })
+  .then(data => {
+    cssFilePath = data;
+    return askQuestion(prompts, 2);
+  })
+  .then(data => {
+    jsFilePath = data;
+    rl.close();
+
+    createHTML(htmlFileName, pageTitle, cssFilePath, jsFilePath);
+  })
+
