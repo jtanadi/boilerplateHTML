@@ -2,7 +2,7 @@
 Simple node script to start a basic html file.
 
 ### Installation
-Install in `~/bin` to use globally (create folder if it doesn't exist).
+Install in `~/bin` to use globally (create folder if it doesn't exist and add it to your `$PATH`).
 
 ### Usage
 To start a new `.html` file, type: 
