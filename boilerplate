@@ -18,6 +18,27 @@ const rl = readline.createInterface({
 })
 
 /************************/
+/*       Prompts        */
+/************************/
+const prompts = ["Enter page title (press enter to skip):", "Enter path to CSS file (press enter to skip):", "Enter path to JS file (press enter to skip):"];
+let pageTitle, cssFilePath, jsFilePath;
+askQuestion(prompts, 0)
+  .then(data => {
+    pageTitle = data;
+    return askQuestion(prompts, 1);
+  })
+  .then(data => {
+    cssFilePath = data;
+    return askQuestion(prompts, 2);
+  })
+  .then(data => {
+    jsFilePath = data;
+    rl.close();
+
+    createHTML(htmlFileName, pageTitle, cssFilePath, jsFilePath);
+  })
+
+/************************/
 /* Function definitions */
 /************************/
 function askQuestion(questions, index) {
@@ -49,25 +70,3 @@ function createHTML(htmlFile, title, css, js) {
     console.log(`Boilerplate ${htmlFile} written.`);
   })
 }
-
-/************************/
-/*     Do some work     */
-/************************/
-const prompts = ["Enter page title (press enter to skip):", "Enter path to CSS file (press enter to skip):", "Enter path to JS file (press enter to skip):"];
-let pageTitle, cssFilePath, jsFilePath;
-askQuestion(prompts, 0)
-  .then(data => {
-    pageTitle = data;
-    return askQuestion(prompts, 1);
-  })
-  .then(data => {
-    cssFilePath = data;
-    return askQuestion(prompts, 2);
-  })
-  .then(data => {
-    jsFilePath = data;
-    rl.close();
-
-    createHTML(htmlFileName, pageTitle, cssFilePath, jsFilePath);
-  })
-
