@@ -5,12 +5,12 @@ Simple node script to create a boilerplate html file.
 Install in `~/bin` to use globally (create folder if it doesn't exist and add it to your `$PATH`).
 
 ### Usage
-To start a new `.html` file, type: 
+To start a new `.html` file in the current directory, type: 
 ```shell
 $ boilerplate <htmlFileName>
 ```
 
-`boilerplate` only checks if the argument has an `.html` extension (if it doesn't it will be added). It doesn't check for anything else. If the file already exists, it will be overwritten.
+`boilerplate` checks if the argument has an `.html` extension (if not, it will be added), but **will not** check if the file already exists (always overwritten).
 
 `boilerplate` will prompt for a page title, path to a `CSS` file, and a path to a `JS` file:
 ```shell
@@ -22,4 +22,4 @@ $ Enter path to JS file (press enter to skip):
 script.js
 ```
 
-Again, `boilerplate` doesn't do any file path checking.
+If `css` and `js` files and their directories don't exist yet, they will be created recursively.
