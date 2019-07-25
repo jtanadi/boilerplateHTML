@@ -62,10 +62,9 @@ function promiseCheckFile(path, content = "") {
         const dir = path.split("/").slice(0, -1).join("/");
         fs.mkdir(dir, { recursive: true }, err => {
           if (err) reject(err);
-        })
-
-        fs.writeFile(path, content, err => {
-          if (err) reject(err);
+          fs.writeFile(path, content, err => {
+            if (err) reject(err);
+          })
         })
       } else {
         fs.close(fd, err => {
