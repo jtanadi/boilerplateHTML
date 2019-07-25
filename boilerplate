@@ -49,7 +49,7 @@ const dataForHTML = [htmlFileName];
 
     dataForHTML.push(verifiedPath || response);
 
-    if (i === steps.length - 1) {
+    if (i === s.length - 1) {
       rl.close();
       createHTML(dataForHTML);
     }
