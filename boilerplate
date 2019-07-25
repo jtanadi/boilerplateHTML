@@ -32,14 +32,14 @@ promiseQuestion(prompts[0])
     return promiseQuestion(prompts[1]);
   })
   .then(cssPath => {
-    return promiseCheckFile(cssPath);
+    return promiseCheckFile(cssPath, ".css");
   })
   .then(verifiedPath => {
     cssFilePath = verifiedPath;
     return promiseQuestion(prompts[2]);
   })
   .then(jsPath => {
-    return promiseCheckFile(jsPath);
+    return promiseCheckFile(jsPath, ".js");
   })
   .then(verifiedPath => {
     jsFilePath = verifiedPath;
@@ -54,15 +54,24 @@ promiseQuestion(prompts[0])
 /************************/
 /* Function definitions */
 /************************/
-function promiseCheckFile(path, content = "") {
+function promiseCheckFile(path, ext) {
   // Try to open file; create dir and file if it doesn't exist (on error)
   return new Promise((resolve, reject) => {
     fs.open(path, "r", (err, fd) => {
       if (err) {
-        const dir = path.split("/").slice(0, -1).join("/");
+        let dir = path.split("/");
+        let fileName = dir.pop();
+        dir = dir.join("/");
+
         fs.mkdir(dir, { recursive: true }, err => {
           if (err) reject(err);
-          fs.writeFile(path, content, err => {
+
+          // Append extension if not there
+          if (fileName.slice(-ext.length) !== ext) {
+            fileName += ext;
+          }
+
+          fs.writeFile(`${dir}/${fileName}`, "", err => {
             if (err) reject(err);
           })
         })
