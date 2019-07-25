@@ -55,7 +55,7 @@ promiseQuestion(prompts[0])
 /* Function definitions */
 /************************/
 function promiseCheckFile(path, content = "") {
-  // Try to open file; create file if it doesn't exist (on error)
+  // Try to open file; create dir and file if it doesn't exist (on error)
   return new Promise((resolve, reject) => {
     fs.open(path, "r", (err, fd) => {
       if (err) {
