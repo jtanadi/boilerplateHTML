@@ -4,18 +4,17 @@ if (process.argv.length !== 3){
   return;
 }
 
-const readline = require("readline");
 const fs = require("fs");
+const readline = require("readline");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+})
 
 let htmlFileName = process.argv[2];
 if (htmlFileName.slice(-5) !== ".html") {
   htmlFileName += ".html";
 }
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-})
 
 /************************/
 /*       Prompts        */
