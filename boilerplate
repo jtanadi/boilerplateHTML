@@ -42,12 +42,11 @@ const dataForHTML = [htmlFileName];
 // IIFE so we can use `async`
 (async function(s) {
   for (let i = 0; i < s.length; i++) {
-    const response = await promiseQuestion(steps[i].prompt);
+    const response = await promiseQuestion(s[i].prompt);
+    const verifiedPath = (i !== 0)
+      ? await promiseCheckFile(response, s[i].content, s[i].ext)
+      : null
 
-    let verifiedPath;
-    if (i !== 0) {
-      verifiedPath = await promiseCheckFile(response, steps[i].content, steps[i].ext);
-    }
     dataForHTML.push(verifiedPath || response);
 
     if (i === steps.length - 1) {
