@@ -22,8 +22,10 @@ Enter path to JS file (press enter to skip):
 $ script.js
 ```
 
-With the paths above, the resulting html will have these `<link>` and `<script>` tags:
+With the paths above, the resulting html will have these `<title>`, `<link>`, and `<script>` tags:
 ```html
+<!-- stuff here -->
+<title>Best page ever</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 
 <!-- stuff here -->
@@ -49,6 +51,23 @@ The `<link>` and `<script>` tags will look like:
 <!-- stuff here -->
 
 <script type="application/javascript" src="./other_stuff/scripts/main.js"></script>
+```
+
+And your folder will look like:
+```
+./
+|
+├── other_stuff/
+|   | 
+|   ├── styles/
+|   |   |
+|   |   └── main.css
+|   |
+|   └── scripts/
+|       |
+|       └── main.js
+|
+└── index.html
 ```
 
 ### Skipping `css` and `js` files
