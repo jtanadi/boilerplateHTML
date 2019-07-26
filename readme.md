@@ -34,12 +34,21 @@ With the paths above, the resulting html will have these `<link>` and `<script>`
 ### Creating files in other directories
 If you prefer to have your `css` and `js` files in separate directories, just type them out, and `boilerplate` will create all folders that lead to those files for you:
 ```shell
+<<<<<<< HEAD
 Enter page title (press enter to skip):
 $ Another great page
 Enter path to CSS file (press enter to skip):
 $ ./other_stuff/styles/main.css
 Enter path to JS file (press enter to skip):
 $ ./other_stuff/scripts/main.js
+=======
+$ Enter page title (press enter to skip):
+Another great page
+$ Enter path to CSS file (press enter to skip):
+./other_stuff/styles/main.css
+$ Enter path to JS file (press enter to skip):
+./other_stuff/scripts/main.js
+>>>>>>> a0211460d753b37aae1565ec683ff02bacf09bf2
 ```
 
 The `<link>` and `<script>` tags will look like:
