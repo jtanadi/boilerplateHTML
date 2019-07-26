@@ -121,7 +121,6 @@ function createHTML(contentData) {
     <title>${title}</title>
     ${cssBlock}
   </head>
-
   <body>
     ${jsBlock}
   </body>
