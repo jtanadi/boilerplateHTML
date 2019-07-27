@@ -47,6 +47,7 @@ const steps = [
       ? await promiseCheckFile(response, s[i].content, s[i].ext)
       : null
 
+    // push response if verifiedPath is null
     dataForHTML.push(verifiedPath || response);
 
     if (i === s.length - 1) {
@@ -63,7 +64,7 @@ function promiseCheckFile(filePath, content, ext) {
   // Try to open file; create dir and file if it doesn't exist (on error)
   return new Promise((resolve, reject) => {
     // Shortcut if user doesn't input path
-    if (!filePath.length) {
+    if (!filePath) {
       resolve(filePath);
       return;
     // If user inputs a file, append extension if not there
@@ -100,11 +101,11 @@ function promiseQuestion(question) {
 function createHTML(contentData) {
   const [htmlFile, title, css, js] = contentData;
 
-  const cssBlock = (!css.length)
+  const cssBlock = (!css)
     ? "<style>\n      /* CSS here */\n    </style>"
     : `<link rel="stylesheet" type="text/css" href="${css}" />`
 
-  const jsBlock = (!js.length)
+  const jsBlock = (!js)
     ? "<script>\n      /* JS here */\n    </script>"
     : `<script type="application/javascript" src="${js}"></script>`
 
