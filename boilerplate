@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 const argLen = process.argv.length;
-if (argLen < 3 && argLen > 4){
+if (argLen < 3 || argLen > 4){
   console.log("boilerplate takes in 1 file name and 1 optional flag");
   return;
 }
