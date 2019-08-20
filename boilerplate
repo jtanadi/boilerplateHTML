@@ -140,7 +140,7 @@ function createHTML(contentData) {
     ? "<style>\n      /* CSS here */\n    </style>"
     : `<link rel="stylesheet" type="text/css" href="${css}" />`;
 
-  const typeContent = (!USE_REACT) ? "application/javascript" : "text/babel";
+  const typeContent = (USE_REACT && !js) ? "text/babel" : "application/javascript" ;
   const jsBlock = (!js)
     ? `<script type="${typeContent}">\n      /* JS(X) here */\n    </script>`
     : `<script type="${typeContent}" src="${js}"></script>`;
